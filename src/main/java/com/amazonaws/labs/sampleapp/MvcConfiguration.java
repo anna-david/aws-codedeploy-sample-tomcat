@@ -52,21 +52,21 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public AmazonCodeDeploy codeDeploy() {
         final AmazonCodeDeploy client = new AmazonCodeDeployClient();
-        client.setRegion(region);
+        client.setRegion(Regions.getCurrentRegion());
         return client;
     }
 
     @Bean
     public AmazonEC2 ec2() {
         final AmazonEC2 client = new AmazonEC2Client();
-        client.setRegion(region);
+        client.setRegion(Regions.getCurrentRegion());
         return client;
     }
     
     @Bean
     public AmazonAutoScaling autoScaling() {
         AmazonAutoScaling client = new AmazonAutoScalingClient();
-        client.setRegion(region);
+        client.setRegion(Regions.getCurrentRegion());
         return client;
     }
 
