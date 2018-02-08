@@ -27,7 +27,8 @@ import java.io.IOException;
 @ComponentScan(basePackages = {"com.amazonaws.labs.sampleapp"})
 @Configuration
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
-    private static Region region = Regions.getCurrentRegion();
+    //private static Region region = Regions.getCurrentRegion();
+    private static Region region = Regions.US_EAST_2.getCurrentRegion();
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
@@ -52,21 +53,24 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public AmazonCodeDeploy codeDeploy() {
         final AmazonCodeDeploy client = new AmazonCodeDeployClient();
-        client.setRegion(Regions.getCurrentRegion());
+        client.setRegion(Regions.US_EAST_2.getCurrentRegion());
+        System.out.println("Region Name"+ region.getName());
         return client;
     }
 
     @Bean
     public AmazonEC2 ec2() {
         final AmazonEC2 client = new AmazonEC2Client();
-        client.setRegion(Regions.getCurrentRegion());
+        client.setRegion(Regions.US_EAST_2.getCurrentRegion());
+        System.out.println("Region Name"+ region.getName());
         return client;
     }
     
     @Bean
     public AmazonAutoScaling autoScaling() {
         AmazonAutoScaling client = new AmazonAutoScalingClient();
-        client.setRegion(Regions.getCurrentRegion());
+        client.setRegion(Regions.US_EAST_2.getCurrentRegion());
+        System.out.println("Region Name"+ region.getName());
         return client;
     }
 
